@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.FeatureManagement;
 using MobileStoreFeatureFlags.Data;
 using MobileStoreFeatureFlags.Services;
 
@@ -13,6 +14,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddFeatureManagement();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IMobileDataService, MobileDataServiceMock>();
 
